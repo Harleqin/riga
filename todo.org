@@ -1,0 +1,1 @@
+* Ein Benutzer kann eine neue Liga anlegen.
