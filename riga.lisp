@@ -21,17 +21,23 @@
 
 ;;; DB
 
-(crane:setup :migrations-directory
-             (asdf:system-relative-pathname '#:riga #p"migrations/")
-             :databases '(:main (:type :postgres
-                                 :name "riga"
-                                 :user "riga"
-                                 :pass "22eWuBVxRW"))
-             :debug nil)
+(defclass liga ()
+  ((id :type integer
+       :primary-key t
+       :auto-increment t
+       :reader liga-id)
+   (name :type (varchar 128)
+         :initarg :name
+         :accessor liga-name)
+   (runden :type integer
+           :initarg :runden
+           :accessor liga-runden))
+  (:metaclass integral:<dao-table-class>)
+  (:table-name "ligen"))
 
 (defun db-start ()
-  (crane:connect))
+  (integral:connect-toplevel :postgresql
+                             :database-name "riga"
+                             :username "riga"
+                             :password "22eWuBVxRW"))
 
-(crane:deftable liga ()
-  (name :type text)
-  (runden :type integer))
