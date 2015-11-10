@@ -21,10 +21,24 @@
 
 ;;; DB
 
+(defun db-start (&key ensure-tables-p migrate-tables-p)
+  (integral:connect-toplevel :postgres
+                             :database-name "riga"
+                             :username "riga"
+                             :password "22eWuBVxRW")
+  (when ensure-tables-p
+    (dolist (table (find-all-table-classes))
+      (integral:ensure-table-exists )))
+  (when migrate-tables-p
+    (dolist (table (find-all-table-classes))
+      (integral:migrate-table table))))
+
+(defun find-all-table-classes ()
+  (list 'liga)) ; FIXME: use the CLOS!
+
 (defclass liga ()
-  ((id :type integer
+  ((id :type serial
        :primary-key t
-       :auto-increment t
        :reader liga-id)
    (name :type (varchar 128)
          :initarg :name
@@ -34,10 +48,4 @@
            :accessor liga-runden))
   (:metaclass integral:<dao-table-class>)
   (:table-name "ligen"))
-
-(defun db-start ()
-  (integral:connect-toplevel :postgresql
-                             :database-name "riga"
-                             :username "riga"
-                             :password "22eWuBVxRW"))
 
