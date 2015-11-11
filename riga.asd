@@ -11,5 +11,6 @@
                #:ningle)
   :serial t
   :components ((:file "package")
+               (:file "data")
                (:file "riga")))
 
