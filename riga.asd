@@ -4,7 +4,8 @@
   :description "A web based league management system"
   :author "Svante von Erichsen <svante.v.erichsen@web.de>"
   :license "public domain"
-  :depends-on (#:cl-who
+  :depends-on (#:alexandria
+               #:cl-who
                #:clack
                #:dbd-postgres
                #:integral
@@ -12,5 +13,6 @@
   :serial t
   :components ((:file "package")
                (:file "data")
+               (:file "direct")
                (:file "riga")))
 
