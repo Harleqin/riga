@@ -1,5 +1,5 @@
 ;;;; package.lisp
 
 (defpackage #:riga
-  (:use #:cl #:alexandria))
+  (:use #:cl #:alexandria #:cl-who))
 

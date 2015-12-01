@@ -12,6 +12,9 @@
                #:ningle)
   :serial t
   :components ((:file "package")
+               (:file "util")
+               (:file "routing")
+               (:file "page")
                (:file "data")
                (:file "direct")
                (:file "riga")))
