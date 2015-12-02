@@ -7,6 +7,7 @@ comparison."
   (with-gensyms (args)
     `(setf ,(cons 'ningle:route route-spec)
            (lambda (,args)
+             (declare (ignorable ,args))
              (assoc-bind (,parameters ,args
                                       :var-transform #'string
                                       :test #'equalp)
