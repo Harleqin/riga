@@ -19,3 +19,6 @@ keys."))
 (defmethod find-liga ((key-name (eql :kurzname)) (key-value string))
   (first (integral:select-dao 'liga
                               (sxql:where (:= :kurzname key-value)))))
+
+(defun all-ligen ()
+  (integral:select-dao 'liga))
