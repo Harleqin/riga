@@ -4,9 +4,18 @@
 
 (defvar *app* (make-instance 'ningle:<app>))
 
-(defroute (*app* "/hello") (foo)
-  (standard-page ()
-    (:h1 "hello!" (str foo))))
+(defroute (*app* "/ligen") ()
+  (standard-page (:title "Hello")
+    (:h2 "Ligen")
+    (display-ligen)))
+
+(defun display-ligen ()
+  (html ()
+    (:ul (mapc #'display-liga-line (all-ligen)))))
+
+(defun display-liga-line (liga)
+  (html ()
+    (:li (esc (liga-name liga)))))
 
 ;;; Server
 
