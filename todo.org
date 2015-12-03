@@ -1,1 +1,2 @@
-* Ein Benutzer kann eine neue Liga anlegen.
+* TODO Ein Benutzer kann eine neue Liga anlegen.
+- Berechtigung nötig

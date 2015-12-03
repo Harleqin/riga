@@ -1,0 +1,5 @@
+* Overview
+This is a little experimental repository for a CRUD web application.
+
+It is supposed to support the management of a sports league, specifically of a
+Go team league.
