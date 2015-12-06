@@ -31,12 +31,13 @@
   :description "Tests for riga"
   :author "Svante von Erichsen <svante.v.erichsen@web.de>"
   :license "public domain"
-  :depends-on (#:riga #:hu.dwim.stefil)
+  :depends-on (#:riga #:hu.dwim.stefil #:drakma)
   :serial t
   :components ((:module "test"
                         :serial t
                         :components
                         ((:file "package")
                          (:file "test-suite")
-                         (:file "util-test"))))
+                         (:file "util-test")
+                         (:file "routing-test"))))
   :perform (test-op (o c) (uiop:symbol-call 'riga-test 'riga-tests)))
