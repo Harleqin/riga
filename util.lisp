@@ -18,3 +18,17 @@ VAR-TRANSFORM\) in ALIST."
            ,@body))
       `(let () ; ignore alist
          ,@body)))
+
+(defmacro with-retry-restart ((&key (description "Retry")) &body forms)
+  "Establishes a block named NIL in which FORMS are executed in an implicit
+PROGN.  FORMS will be reexecuted when the RETRY restart is invoked."
+  (with-gensyms (start-tag stream)
+    `(block nil
+       (tagbody
+        ,start-tag
+          (restart-case
+              (return (progn ,@forms))
+            (retry ()
+              :report (lambda (,stream)
+                        (princ ,description ,stream))
+              (go ,start-tag)))))))
